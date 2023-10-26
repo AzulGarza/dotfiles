@@ -40,6 +40,7 @@ neovim
 ```bash
 sudo make install_neovim_python
 neovim
+:MasonInstallAll
 :TSInstall python
 ```
 
