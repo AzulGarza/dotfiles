@@ -1,7 +1,28 @@
 install_neovim_mac:
 	#brew install libintl
 	brew install gettext
-	wget https://github.com/neovim/neovim/releases/latest/download/nvim-macos.tar.gz
+	brew install ripgrep
+	wget https://github.com/neovim/neovim/releases/latest/download/nvim-macos.tar.gz -O nvim-macos.tar.gz
 	xattr -c ./nvim-macos.tar.gz
 	tar xzvf nvim-macos.tar.gz
 	./nvim-macos/bin/nvim
+
+install_nerd_font:	
+	rm -r ~/nerd-fonts || true
+	git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts --depth 1
+	chown -R $(SUDO_USER):$(SUDO_GID) ~/nerd-fonts/
+	cd ~/nerd-fonts/
+	source ./install.sh JetBrainsMono
+
+install_neovim_chad:	
+	rm -r ~/.config/nvim.backup || true
+	mkdir -p ~/.config/nvim.backup/
+	mkdir -p ~/.config/nvim/
+	mv ~/.config/nvim ~/.config/nvim.backup
+	git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+	chown -R $(SUDO_USER):$(SUDO_GID) ~/.config/nvim/
+
+remove_neovim:
+	rm -rf ~/.config/nvim
+	rm -rf ~/.local/share/nvim
+
