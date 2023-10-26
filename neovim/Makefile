@@ -17,8 +17,7 @@ install_nerd_font:
 	rm -r ~/nerd-fonts || true
 	git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts --depth 1
 	chown -R $(SUDO_USER):$(SUDO_GID) ~/nerd-fonts/
-	cd ~/nerd-fonts/
-	source ./install.sh JetBrainsMono
+	cd ~/nerd-fonts/ && ./install.sh JetBrainsMono
 
 install_neovim_chad:	
 	rm -r ~/.config/nvim.backup || true
