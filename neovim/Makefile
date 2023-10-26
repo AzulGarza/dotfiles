@@ -30,3 +30,10 @@ remove_neovim:
 	rm -rf ~/.config/nvim
 	rm -rf ~/.local/share/nvim
 
+install_neovim_python:
+	mkdir -p ./tmp/
+	git clone https://github.com/dreamsofcode-io/neovim-python ./tmp/
+	mv ./tmp/*.lua ~/.config/nvim/lua/custom
+	mkdir -p ~/.config/nvim/lua/custom/configs
+	mv ./tmp/configs/*.lua ~/.config/nvim/lua/custom/configs/
+	rm -r ./tmp/
