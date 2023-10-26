@@ -26,3 +26,11 @@ sudo make install_neovim_chad
 ```
 
 Start using `neovim` using `nvim`.
+
+4. Install python highglighting
+
+```
+neovim
+:TSInstall python
+:TSInstallInfo # check available
+```
