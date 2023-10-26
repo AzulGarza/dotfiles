@@ -34,3 +34,12 @@ neovim
 :TSInstall python
 :TSInstallInfo # check available
 ```
+
+5. Install [neovim-python](https://github.com/dreamsofcode-io/neovim-python)
+
+```bash
+sudo make install_neovim_python
+neovim
+:TSInstall python
+```
+
