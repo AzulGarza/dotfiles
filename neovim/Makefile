@@ -12,7 +12,6 @@ install_neovim_linux:
 	tar xzvf nvim-linux64.tar.gz
 	./nvim-linux64/bin/nvim
 
-
 install_nerd_font:	
 	rm -r ~/nerd-fonts || true
 	git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts --depth 1
