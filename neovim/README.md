@@ -35,12 +35,18 @@ neovim
 :TSInstallInfo # check available
 ```
 
-5. Install [neovim-python](https://github.com/dreamsofcode-io/neovim-python)
+5. Install 
 
 ```bash
-sudo make install_neovim_python
+sudo make install_azul_plugins
 neovim
 :MasonInstallAll
 :TSInstall python
 ```
+
+Sources
+
+1. [neovim-python](https://github.com/dreamsofcode-io/neovim-python)
+2. [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim)
+3. [codeium.vim](https://github.com/Exafunction/codeium.vim)
 
