@@ -30,10 +30,10 @@ remove_neovim:
 	rm -rf ~/.config/nvim
 	rm -rf ~/.local/share/nvim
 
-install_neovim_python:
+install_azul_plugins:
+	rm -rf ./tmp/ || true
 	mkdir -p ./tmp/
-	git clone https://github.com/dreamsofcode-io/neovim-python ./tmp/
-	mv ./tmp/*.lua ~/.config/nvim/lua/custom
-	mkdir -p ~/.config/nvim/lua/custom/configs
-	mv ./tmp/configs/*.lua ~/.config/nvim/lua/custom/configs/
+	git clone https://github.com/AzulGarza/dotfiles/ ./tmp/
+	rm -rf ~/.config/nvim/lua/custom
+	mv ./tmp/neovim/custom/ ~/.config/nvim/lua/custom/
 	rm -r ./tmp/
