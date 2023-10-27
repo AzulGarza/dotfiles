@@ -36,4 +36,5 @@ install_azul_plugins:
 	git clone https://github.com/AzulGarza/dotfiles/ ./tmp/
 	rm -rf ~/.config/nvim/lua/custom
 	mv ./tmp/neovim/custom/ ~/.config/nvim/lua/custom/
+	chown -R $(SUDO_USER):$(SUDO_GID) ~/.config/nvim/lua/custom
 	rm -r ./tmp/
