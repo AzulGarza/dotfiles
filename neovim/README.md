@@ -12,7 +12,7 @@ make install_neovim_[mac, linux]
 2. Install nerd fonts:
 
 ```bash
-sudo make install_nerd_font
+sudo -E make install_nerd_font
 ```
 
 Be sure to change the font of your terminal
@@ -22,24 +22,16 @@ If you're using [iTerm2](https://iterm2.com/) as I do, check [this thread](https
 3. Install neovim chad
 
 ```bash
-sudo make install_neovim_chad 
+sudo -E make install_neovim_chad 
 ```
 
 Start using `neovim` using `nvim`.
 
-4. Install python highglighting
+4. Install python plugins
 
 ```bash
-neovim
-:TSInstall python
-:TSInstallInfo # check available
-```
-
-5. Install 
-
-```bash
-sudo make install_azul_plugins
-neovim
+sudo -E make install_azul_plugins
+nvim
 :MasonInstallAll
 :TSInstall python
 ```
@@ -50,3 +42,15 @@ Sources
 2. [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim)
 3. [codeium.vim](https://github.com/Exafunction/codeium.vim)
 
+
+
+### A
+
+1. Ubuntu:
+
+Add these lines to `./zshrc:`
+
+```
+alias nvim=~/.local/share/nvim-linux64/bin/nvim
+alias vim=nvim
+```
