@@ -12,7 +12,7 @@ make install_neovim_[mac, linux]
 2. Install nerd fonts:
 
 ```bash
-make install_nerd_font
+sudo make install_nerd_font
 ```
 
 Be sure to change the font of your terminal
