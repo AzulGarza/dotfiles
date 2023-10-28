@@ -10,7 +10,7 @@ install_neovim_mac:
 install_neovim_linux:
 	wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz -O nvim-linux64.tar.gz
 	tar xzvf nvim-linux64.tar.gz
-	./nvim-linux64/bin/nvim
+	mv ./nvim-linux64/ ~/.local/share/nvim-linux64
 
 install_nerd_font:	
 	rm -r ~/nerd-fonts || true
