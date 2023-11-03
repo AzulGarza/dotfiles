@@ -65,14 +65,22 @@ install_git() {
 # Function to install NvChad
 install_neovim_chad() {
     echo "Installing NvChad..."
-    rm -r ~/nerd-fonts || true
-    git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts --depth 1
-    source ~/nerd-fonts/install.sh JetBrainsMono
-    rm -r ~/.config/nvim.backup || true
-    mkdir -p ~/.config/nvim.backup/
-    mkdir -p ~/.config/nvim/
-    mv ~/.config/nvim ~/.config/nvim.backup
-    git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+    if ! [ -d "$HOME/nerd-fonts" ]; then
+      rm -r ~/nerd-fonts || true
+      git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts --depth 1
+      source ~/nerd-fonts/install.sh JetBrainsMono
+    else
+      echo "Nerd Fonts is already installed"
+    fi
+    if ! [ -d "$HOME/.config/nvim" ]; then
+      rm -r ~/.config/nvim.backup || true
+      mkdir -p ~/.config/nvim.backup/
+      mkdir -p ~/.config/nvim/
+      mv ~/.config/nvim ~/.config/nvim.backup
+      git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+    else
+      echo "NvChad is already installed"
+    fi
 }
 
 # Function to install Neovim
@@ -131,7 +139,8 @@ install_stow() {
 
 set_symlinks() {
     echo "Setting symlinks using stow..."
-    stow .
+    LC_ALL=C.UTF-8 LANG=C.UTF-8 LANGUAGE=C.UTF-8
+    stow -R config/
 }
 
 main() {
