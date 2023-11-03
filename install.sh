@@ -68,7 +68,7 @@ install_neovim_chad() {
     if ! [ -d "$HOME/nerd-fonts" ]; then
       rm -r ~/nerd-fonts || true
       git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts --depth 1
-      source ~/nerd-fonts/install.sh JetBrainsMono
+      source ~/nerd-fonts/install.sh -q JetBrainsMono
     else
       echo "Nerd Fonts is already installed"
     fi
