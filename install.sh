@@ -66,10 +66,12 @@ install_git() {
 install_neovim_chad() {
     echo "Installing NvChad..."
     if ! [ -d "$HOME/nerd-fonts" ]; then
+      original_dir=$PWD
       rm -r ~/nerd-fonts || true
       git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts --depth 1
       cd ~/nerd-fonts
       ./install.sh -q JetBrainsMono || true
+      cd $original_dir
     else
       echo "Nerd Fonts is already installed"
     fi
