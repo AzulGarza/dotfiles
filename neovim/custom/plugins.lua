@@ -79,10 +79,13 @@ local plugins = {
     event = 'BufEnter'
   },
   {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    "ellisonleao/glow.nvim",
+    config = function ()
+      require('glow').setup({
+        glow_path = "/bin/glow",
+      })
+    end,
+    cmd = "Glow",
   },
 }
 return plugins
