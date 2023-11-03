@@ -1,0 +1,35 @@
+name: Dotfiles Installation Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-installation:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      HOME: ${{ github.workspace }}
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Run Installation Script
+      run: make install
+
+    - name: Check if Oh My Zsh is installed
+      run: test -d "$HOME/.oh-my-zsh" && echo "Oh My Zsh is installed" || echo "Oh My Zsh is not installed"
+
+    - name: Check for Neovim configuration
+      run: test -f "$HOME/.config/nvim/init.vim" && echo "Neovim configuration exists" || echo "Neovim configuration does not exist"
+
+    - name: Check for Tmux configuration
+      run: test -f "$HOME/.tmux.conf" && echo "Tmux configuration exists" || echo "Tmux configuration does not exist"
+
+    - name: Check for Zsh configuration
+      run: test -f "$HOME/.zshrc" && echo "Zsh configuration exists" || echo "Zsh configuration does not exist"
