@@ -28,6 +28,9 @@ jobs:
     - name: Check for Neovim configuration
       run: test -f "$HOME/.config/nvim/init.vim" && echo "Neovim configuration exists" || echo "Neovim configuration does not exist"
 
+    - name: Check custom neovim plugins
+      run: test -d "$HOME/.config/nvim/luat/custom" && echo "Neovim plugins exist" || echo "Neovim plugins do not exist"
+
     - name: Check for Tmux configuration
       run: test -f "$HOME/.tmux.conf" && echo "Tmux configuration exists" || echo "Tmux configuration does not exist"
 
