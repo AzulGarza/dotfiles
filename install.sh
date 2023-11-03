@@ -150,7 +150,9 @@ install_stow() {
 
 set_symlinks() {
     echo "Setting symlinks using stow..."
-    LC_ALL=C.UTF-8 LANG=C.UTF-8 LANGUAGE=C.UTF-8
+    export LC_ALL=C.UTF-8 
+    export LANG=C.UTF-8 
+    export LANGUAGE=C.UTF-8
     stow -R config/
     stow -R terminal/
 }
@@ -165,7 +167,7 @@ main() {
   install_neovim
   install_neovim_chad
   install_tmux
-#  install_tmp
+  install_tmp
   install_stow
   set_symlinks
   echo "All requested dependencies are installed."
