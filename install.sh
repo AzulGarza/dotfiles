@@ -113,6 +113,16 @@ install_tmux() {
     fi
 }
 
+# install tmp
+install_tmp() {
+    echo "Installing tmp..."
+    if ! [ -d "$HOME/.tmux/plugins/tpm" ]; then
+      git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    else
+      echo "tmp is already installed"
+    fi
+}
+
 install_brew() {
     echo "Installing Homebrew..."
     if ! command_exists brew; then
@@ -141,6 +151,7 @@ set_symlinks() {
     echo "Setting symlinks using stow..."
     LC_ALL=C.UTF-8 LANG=C.UTF-8 LANGUAGE=C.UTF-8
     stow -R config/
+    stow -R terminal/
 }
 
 main() {
@@ -152,6 +163,7 @@ main() {
   install_git
   install_neovim
   install_tmux
+  install_tmp
   install_stow
   set_symlinks
   echo "All requested dependencies are installed."
