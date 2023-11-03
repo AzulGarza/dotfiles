@@ -6,7 +6,7 @@
 1. Install neovim depending on your OS
 
 ```bash
-make install_neovim_[mac, linux]
+make install_neovim
 ```
 
 2. Install nerd fonts:

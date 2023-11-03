@@ -1,5 +1,15 @@
-install_neovim_mac:
-	#brew install libintl
+OS := $(shell uname -s)
+
+install_neovim:
+	if [ $(OS) = "Darwin" ]; then \
+		@echo "Installing neovim on macos"; \
+		install_neovim_macos; \
+	else \
+		@echo "Installing neovim on linux"; \
+		install_neovim_linux; \
+	fi
+
+install_neovim_macos:
 	brew install gettext
 	brew install ripgrep
 	wget https://github.com/neovim/neovim/releases/latest/download/nvim-macos.tar.gz -O nvim-macos.tar.gz
@@ -26,15 +36,6 @@ install_neovim_chad:
 	git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 	chown -R $(SUDO_USER):$(SUDO_GID) ~/.config/nvim/
 
-remove_neovim:
+remove_neovim_chad:
 	rm -rf ~/.config/nvim
 	rm -rf ~/.local/share/nvim
-
-install_azul_plugins:
-	rm -rf ./tmp/ || true
-	mkdir -p ./tmp/
-	git clone https://github.com/AzulGarza/dotfiles/ ./tmp/
-	rm -rf ~/.config/nvim/lua/custom
-	mv ./tmp/neovim/custom/ ~/.config/nvim/lua/custom/
-	chown -R $(SUDO_USER):$(SUDO_GID) ~/.config/nvim/lua/custom
-	rm -r ./tmp/
