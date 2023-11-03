@@ -95,8 +95,6 @@ install_neovim() {
     else
       echo "Neovim is already installed"
     fi
-    echo "Installing NvChad..."
-    install_neovim_chad
 }
 
 # Function to install Tmux
@@ -162,6 +160,7 @@ main() {
   install_conda
   install_git
   install_neovim
+  install_neovim_chad
   install_tmux
   install_tmp
   install_stow
