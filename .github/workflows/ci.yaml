@@ -12,8 +12,6 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
-    env:
-      HOME: ${{ github.workspace }}
 
     steps:
     - name: Check out repository
