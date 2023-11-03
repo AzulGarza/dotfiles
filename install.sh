@@ -68,7 +68,8 @@ install_neovim_chad() {
     if ! [ -d "$HOME/nerd-fonts" ]; then
       rm -r ~/nerd-fonts || true
       git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts --depth 1
-      source ~/nerd-fonts/install.sh -q JetBrainsMono
+      cd ~/nerd-fonts
+      ./install.sh -q JetBrainsMono || true
     else
       echo "Nerd Fonts is already installed"
     fi
@@ -162,7 +163,7 @@ main() {
   install_neovim
   install_neovim_chad
   install_tmux
-  install_tmp
+#  install_tmp
   install_stow
   set_symlinks
   echo "All requested dependencies are installed."
