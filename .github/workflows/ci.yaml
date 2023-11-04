@@ -22,16 +22,16 @@ jobs:
 
     - name: Check zsh configuration 
       run: |
-        test -f "$HOME/.zshrc" || echo "Zsh configuration dont exist" && exit 1 
-        test -d "$HOME/.oh-my-zsh" || echo "Oh My Zsh is not installed" && exit 1
+        test -f "$HOME/.zshrc" || (echo "Zsh configuration dont exist" && exit 1)
+        test -d "$HOME/.oh-my-zsh" || (echo "Oh My Zsh is not installed" && exit 1)
 
     - name: Check for Neovim configuration
-      run: |
-        test -f "$HOME/.config/nvim/init.lua" || echo "Neovim configuration dont exist" && exit 1
-        test -d "$HOME/.config/nvim/lua/custom" || echo "Neovim plugins dont exist" && exit 1
+      run: |9
+        test -f "$HOME/.config/nvim/init.lua" || (echo "Neovim configuration dont exist" && exit 1)
+        test -d "$HOME/.config/nvim/lua/custom" || (echo "Neovim plugins dont exist" && exit 1)
 
     - name: Check for Tmux configuration
       run: | 
-        test -f "$HOME/.tmux/plugins/tpm/tpm" || echo "Tmux plugins dont exist" && exit 1
-        test -f "$HOME/.tmux.conf" || echo "Tmux configuration dont exists" && exit 1
+        test -f "$HOME/.tmux/plugins/tpm/tpm" || (echo "Tmux plugins dont exist" && exit 1)
+        test -f "$HOME/.tmux.conf" || (echo "Tmux configuration dont exists" && exit 1)
 
