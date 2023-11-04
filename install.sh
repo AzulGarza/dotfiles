@@ -149,12 +149,9 @@ install_stow() {
 }
 
 set_symlinks() {
-    echo "Setting symlinks using stow..."
-    export LC_ALL=en_US.UTF-8 
-    export LANG=en_US.UTF-8 
-    export LANGUAGE=en_US.UTF-8
-    stow -R config/
-    stow -R terminal/
+    echo "Setting symlinks using stow from $(pwd)..."
+    stow -v -R -t $HOME config/
+    stow -v -R -t $HOME terminal/
 }
 
 main() {
