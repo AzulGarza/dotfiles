@@ -24,7 +24,7 @@ install_zsh() {
 
 # Function to install Oh My Zsh
 install_oh_my_zsh() {
-    if [ -d "$HOME/.oh-my-zsh" ]; then
+    if ! [ -d "$HOME/.oh-my-zsh" ]; then
       echo "Installing Oh My Zsh..."
       sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     else
@@ -150,9 +150,9 @@ install_stow() {
 
 set_symlinks() {
     echo "Setting symlinks using stow..."
-    export LC_ALL=C.UTF-8 
-    export LANG=C.UTF-8 
-    export LANGUAGE=C.UTF-8
+    export LC_ALL=en_US.UTF-8 
+    export LANG=en_US.UTF-8 
+    export LANGUAGE=en_US.UTF-8
     stow -R config/
     stow -R terminal/
 }
