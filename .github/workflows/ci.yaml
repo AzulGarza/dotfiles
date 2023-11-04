@@ -23,10 +23,11 @@ jobs:
     - name: Check if Oh My Zsh is installed
       run: test -d "$HOME/.oh-my-zsh" && echo "Oh My Zsh is installed" || exit 1
 
-    - name: Check for Neovim configuration
-      run: test -f "$HOME/.config/nvim/init.vim" && echo "Neovim configuration exists" || exit 1
+    - name: Check for Neovim (Chad) configuration
+      run: test -f "$HOME/.config/nvim/init.lua" && echo "Neovim configuration exists" || exit 1
+
     - name: Check custom neovim plugins
-      run: test -d "$HOME/.config/nvim/luat/custom" && echo "Neovim plugins exist" || exit 1
+      run: test -d "$HOME/.config/nvim/lua/custom" && echo "Neovim plugins exist" || exit 1
 
     - name: Check for Tmux configuration
       run: test -f "$HOME/.tmux.conf" && echo "Tmux configuration exists" || exit 1
