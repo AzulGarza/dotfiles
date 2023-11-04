@@ -26,7 +26,7 @@ jobs:
         test -d "$HOME/.oh-my-zsh" || (echo "Oh My Zsh is not installed" && exit 1)
 
     - name: Check for Neovim configuration
-      run: |9
+      run: |
         test -f "$HOME/.config/nvim/init.lua" || (echo "Neovim configuration dont exist" && exit 1)
         test -d "$HOME/.config/nvim/lua/custom" || (echo "Neovim plugins dont exist" && exit 1)
 
