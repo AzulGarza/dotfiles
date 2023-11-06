@@ -154,6 +154,17 @@ set_symlinks() {
     stow -v -R -t $HOME terminal/
 }
 
+install_additional_deps () {
+    echo "Installing additional dependencies..."
+    if [ "$OS" = "Linux" ]; then
+      sudo apt-get update && sudo apt-get install -y tree gh snapd
+      sudo snap install tldr
+    elif [ "$OS" = "Darwin" ]; then
+      brew install tree gh tldr
+    fi
+    gh extension install nektos/gh-act
+}
+
 main() {
 
   install_brew
@@ -166,6 +177,7 @@ main() {
   install_tmux
   install_tmp
   install_stow
+  install_additional_deps
   set_symlinks
   echo "All requested dependencies are installed."
   
