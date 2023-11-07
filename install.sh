@@ -90,10 +90,10 @@ install_neovim_chad() {
 install_neovim() {
     echo "Installing Neovim..."
     if ! command_exists nvim; then
-      if [ "$OS" = "Linux" ]; then
-	  sudo snap install nvim --classic # using snap to get the latest version of neovim
+      if [ "$OS" = "Linux" ]; then 
+        sudo snap install nvim --classic # using snap to get the latest version of neovim
       elif [ "$OS" = "Darwin" ]; then
-          brew install neovim
+        brew install neovim
       fi
     else
       echo "Neovim is already installed"
@@ -105,22 +105,12 @@ install_tmux() {
     echo "Installing Tmux..."
     if ! command_exists tmux; then
       if [ "$OS" = "Linux" ]; then
-          sudo apt-get update && sudo apt-get install -y tmux
+        sudo apt-get update && sudo apt-get install -y tmux
       elif [ "$OS" = "Darwin" ]; then
-          brew install tmux
+        brew install tmux
       fi
     else
       echo "Tmux is already installed"
-    fi
-}
-
-# install tmp
-install_tmp() {
-    echo "Installing tmp..."
-    if ! [ -d "$HOME/.tmux/plugins/tpm" ]; then
-      git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    else
-      echo "tmp is already installed"
     fi
 }
 
@@ -150,20 +140,32 @@ install_stow() {
 
 set_symlinks() {
     echo "Setting symlinks using stow from $(pwd)..."
-    stow -v -R -t $HOME config/
-    stow -v -R -t $HOME terminal/
+    if [ -f "$HOME/.zshrc" ]; then
+      mv $HOME/.zshrc $HOME/.zshrc.backup
+    fi
+    stow -v -R -t $HOME terminal
+    stow -v -R -t $HOME config
 }
 
 install_additional_deps () {
     echo "Installing additional dependencies..."
     if [ "$OS" = "Linux" ]; then
-      sudo apt-get update && sudo apt-get install -y tree gh snapd
+      sudo apt-get update && sudo apt-get install -y gh tree snapd
       sudo snap install tldr
     elif [ "$OS" = "Darwin" ]; then
-      brew install tree gh tldr
+      brew install gh tree tldr
     fi
-    gh extension install nektos/gh-act
 }
+
+setup_conda() {
+    echo "Setting up Conda..."
+    if ! command_exists conda; then
+      $HOME/miniconda/bin/conda init zsh
+    else
+      conda init zsh 
+    fi
+}
+
 
 main() {
 
@@ -176,9 +178,9 @@ main() {
   install_neovim
   install_neovim_chad
   install_tmux
-  install_tmp
   install_stow
   set_symlinks
+  setup_conda
   echo "All requested dependencies are installed."
   
 }
