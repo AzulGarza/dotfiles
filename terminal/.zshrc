@@ -21,5 +21,7 @@ else
   fi
 }
 
+[[ -z $TMUX ]] || conda deactivate; conda activate base
+
 # alias
 alias vim=nvim
