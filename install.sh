@@ -140,8 +140,11 @@ install_stow() {
 
 set_symlinks() {
     echo "Setting symlinks using stow from $(pwd)..."
-    stow -v -R -t $HOME terminal/
-    stow -v -R -t $HOME config/
+    if [-f "$HOME/.zshrc"]; then
+      mv $HOME/.zshrc $HOME/.zshrc.backup
+    fi
+    stow -v -R -t $HOME terminal
+    stow -v -R -t $HOME config
 }
 
 install_additional_deps () {
