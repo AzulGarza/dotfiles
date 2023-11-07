@@ -150,10 +150,10 @@ set_symlinks() {
 install_additional_deps () {
     echo "Installing additional dependencies..."
     if [ "$OS" = "Linux" ]; then
-      sudo apt-get update && sudo apt-get install -y tree snapd
+      sudo apt-get update && sudo apt-get install -y gh tree snapd
       sudo snap install tldr
     elif [ "$OS" = "Darwin" ]; then
-      brew install tree tldr
+      brew install gh tree tldr
     fi
 }
 
