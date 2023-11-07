@@ -147,12 +147,11 @@ set_symlinks() {
 install_additional_deps () {
     echo "Installing additional dependencies..."
     if [ "$OS" = "Linux" ]; then
-      sudo apt-get update && sudo apt-get install -y tree gh snapd
+      sudo apt-get update && sudo apt-get install -y tree snapd
       sudo snap install tldr
     elif [ "$OS" = "Darwin" ]; then
-      brew install tree gh tldr
+      brew install tree tldr
     fi
-    gh extension install nektos/gh-act
 }
 
 setup_conda() {
@@ -176,7 +175,6 @@ main() {
   install_neovim
   install_neovim_chad
   install_tmux
-  install_tmp
   install_stow
   set_symlinks
   setup_conda
