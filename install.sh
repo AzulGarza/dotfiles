@@ -165,6 +165,12 @@ install_additional_deps () {
     gh extension install nektos/gh-act
 }
 
+setup_conda() {
+    echo "Setting up Conda..."
+    $HOME/miniconda/bin/conda init zsh
+}
+
+
 main() {
 
   install_brew
@@ -179,6 +185,7 @@ main() {
   install_tmp
   install_stow
   set_symlinks
+  setup_conda
   echo "All requested dependencies are installed."
   
 }
