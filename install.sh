@@ -167,7 +167,11 @@ install_additional_deps () {
 
 setup_conda() {
     echo "Setting up Conda..."
-    $HOME/miniconda/bin/conda init zsh
+    if ! command_exists conda; then
+      $HOME/miniconda/bin/conda init zsh
+    else
+      conda init zsh 
+    fi
 }
 
 
