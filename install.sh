@@ -37,9 +37,9 @@ install_conda() {
     echo "Installing Conda..."
     if ! command_exists conda; then
       if [ "$OS" = "Linux" ]; then
-          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh
+          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
       elif [ "$OS" = "Darwin" ]; then
-          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o ~/miniconda.sh
+          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
       fi
       bash ~/miniconda.sh -b -p $HOME/miniconda
       rm ~/miniconda.sh
@@ -91,7 +91,7 @@ install_neovim() {
     echo "Installing Neovim..."
     if ! command_exists nvim; then
       if [ "$OS" = "Linux" ]; then
-          sudo apt-get update && sudo apt-get install -y neovim
+	  sudo snap install nvim --classic # using snap to get the latest version of neovim
       elif [ "$OS" = "Darwin" ]; then
           brew install neovim
       fi
@@ -168,6 +168,7 @@ install_additional_deps () {
 main() {
 
   install_brew
+  install_additional_deps
   install_zsh
   install_oh_my_zsh
   install_conda
@@ -177,7 +178,6 @@ main() {
   install_tmux
   install_tmp
   install_stow
-  install_additional_deps
   set_symlinks
   echo "All requested dependencies are installed."
   
