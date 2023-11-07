@@ -90,10 +90,10 @@ install_neovim_chad() {
 install_neovim() {
     echo "Installing Neovim..."
     if ! command_exists nvim; then
-      if [ "$OS" = "Linux" ]; then
-	  sudo snap install nvim --classic # using snap to get the latest version of neovim
+      if [ "$OS" = "Linux" ]; then 
+        sudo snap install nvim --classic # using snap to get the latest version of neovim
       elif [ "$OS" = "Darwin" ]; then
-          brew install neovim
+        brew install neovim
       fi
     else
       echo "Neovim is already installed"
@@ -105,9 +105,9 @@ install_tmux() {
     echo "Installing Tmux..."
     if ! command_exists tmux; then
       if [ "$OS" = "Linux" ]; then
-          sudo apt-get update && sudo apt-get install -y tmux
+        sudo apt-get update && sudo apt-get install -y tmux
       elif [ "$OS" = "Darwin" ]; then
-          brew install tmux
+        brew install tmux
       fi
     else
       echo "Tmux is already installed"
