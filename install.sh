@@ -114,16 +114,6 @@ install_tmux() {
     fi
 }
 
-# install tmp
-install_tmp() {
-    echo "Installing tmp..."
-    if ! [ -d "$HOME/.tmux/plugins/tpm" ]; then
-      git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    else
-      echo "tmp is already installed"
-    fi
-}
-
 install_brew() {
     echo "Installing Homebrew..."
     if ! command_exists brew; then
