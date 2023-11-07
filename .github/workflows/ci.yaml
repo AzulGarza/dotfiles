@@ -35,3 +35,7 @@ jobs:
         test -f "$HOME/.tmux/plugins/tpm/tpm" || (echo "Tmux plugins dont exist" && exit 1)
         test -f "$HOME/.tmux.conf" || (echo "Tmux configuration dont exists" && exit 1)
 
+    - name: Check for conda configuration
+      run: |
+        zsh
+        conda --version || (echo "Conda is not installed" && exit 1)
