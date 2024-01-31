@@ -7,6 +7,11 @@ command_exists() {
 
 # Detect the OS using uname -s
 OS=$(uname -s)
+if [ "$OS" = "Linux" ]; then
+  if grep -q "Amazon Linux" /etc/system-release 2>/dev/null; then
+    OS="AmazonLinux"
+  fi
+fi
 
 # Function to install Zsh
 install_zsh() {
@@ -14,6 +19,8 @@ install_zsh() {
     if ! command_exists zsh; then
       if [ "$OS" = "Linux" ]; then
           sudo apt-get update && sudo apt-get install -y zsh
+      elif [ "$OS" = "AmazonLinux" ]; then
+          sudo yum update && sudo yum install -y zsh
       elif [ "$OS" = "Darwin" ]; then
           brew install zsh
       fi
@@ -54,6 +61,8 @@ install_git() {
     if ! command_exists git; then
       if [ "$OS" = "Linux" ]; then
           sudo apt-get update && sudo apt-get install -y git
+      elif [ "$OS" = "AmazonLinux" ]; then
+          sudo yum update && sudo yum install -y git
       elif [ "$OS" = "Darwin" ]; then
           brew install git
       fi
@@ -92,6 +101,8 @@ install_neovim() {
     if ! command_exists nvim; then
       if [ "$OS" = "Linux" ]; then
           sudo apt-get update && sudo apt-get install -y neovim
+      elif [ "$OS" = "AmazonLinux" ]; then
+          sudo yum update && sudo yum install -y neovim
       elif [ "$OS" = "Darwin" ]; then
           brew install neovim
       fi
@@ -106,6 +117,8 @@ install_tmux() {
     if ! command_exists tmux; then
       if [ "$OS" = "Linux" ]; then
           sudo apt-get update && sudo apt-get install -y tmux
+      elif [ "$OS" = "AmazonLinux" ]; then
+          sudo yum update && sudo yum install -y tmux
       elif [ "$OS" = "Darwin" ]; then
           brew install tmux
       fi
@@ -140,6 +153,8 @@ install_stow() {
     if ! command_exists stow; then
       if [ "$OS" = "Linux" ]; then
           sudo apt-get update && sudo apt-get install -y stow
+      elif [ "$OS" = "AmazonLinux" ]; then
+          sudo yum update && sudo yum install -y stow
       elif [ "$OS" = "Darwin" ]; then
           brew install stow
       fi
@@ -159,6 +174,8 @@ install_additional_deps () {
     if [ "$OS" = "Linux" ]; then
       sudo apt-get update && sudo apt-get install -y tree gh snapd
       sudo snap install tldr
+    elif [ "$OS" = "AmazonLinux" ]; then
+      sudo yum update && sudo yum install -y tree gh
     elif [ "$OS" = "Darwin" ]; then
       brew install tree gh tldr
     fi
