@@ -78,6 +78,7 @@ local plugins = {
     'Exafunction/codeium.vim',
     event = 'BufEnter'
   },
+  { "nvim-neotest/nvim-nio" },
   {
     "ellisonleao/glow.nvim",
     config = function ()
