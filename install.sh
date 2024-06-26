@@ -80,7 +80,7 @@ install_neovim_chad() {
       mkdir -p ~/.config/nvim.backup/
       mkdir -p ~/.config/nvim/
       mv ~/.config/nvim ~/.config/nvim.backup
-      git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+      git clone https://github.com/NvChad/starter ~/.config/nvim
     else
       echo "NvChad is already installed"
     fi
