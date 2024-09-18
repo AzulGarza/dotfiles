@@ -6,7 +6,7 @@ This repository contains my personal dotfiles for Linux and macOS environments. 
 
 Before you begin, ensure you have the following installed on your system:
 - `git`: For cloning the repository.
-- `make`: For running the installation commands.
+- `make`: This is used to run the installation commands.
 
 ## Installation
 
