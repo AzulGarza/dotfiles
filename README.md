@@ -49,7 +49,7 @@ In addition to the above, the installer will also configure:
 
 ## Customization
 
-After installation, you may wish to customize the configurations to your liking. Configuration files can be found within their respective directories.
+After installation, you may wish to customize the configurations. Configuration files are located within their respective directories.
 
 ## Contribution
 
